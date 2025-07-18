@@ -1,6 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Classification;
 using Microsoft.CodeAnalysis.Text;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Tagging;
@@ -125,17 +126,23 @@ namespace SemanticColorizer
                 // this makes me feel dirty, but otherwise it will not
                 // work reliably, as TryGetSemanticModel() often will return false
                 // should make this into a completely async process somehow
-                var task = Cache.Resolve(_theBuffer, spans[0].Snapshot);
+                var task = Cache.ResolveAsync(_theBuffer, spans[0].Snapshot);
                 try
                 {
-                    task.Wait();
+                    ThreadHelper.JoinableTaskFactory.Run(async delegate
+                    {
+                        await task.ConfigureAwait(false);
+                    });
                 }
                 catch (Exception)
                 {
                     // TODO: report this to someone.
                     return Enumerable.Empty<ITagSpan<IClassificationTag>>();
                 }
-                _cache = task.Result;
+                ThreadHelper.JoinableTaskFactory.Run(async delegate
+                {
+                    _cache = await task.ConfigureAwait(false);
+                });
                 if (_cache == null)
                 {
                     // TODO: report this to someone.
@@ -320,7 +327,7 @@ namespace SemanticColorizer
 
             private Cache() { }
 
-            public static async Task<Cache> Resolve(ITextBuffer buffer, ITextSnapshot snapshot)
+            public static async Task<Cache> ResolveAsync(ITextBuffer buffer, ITextSnapshot snapshot)
             {
                 var workspace = buffer.GetWorkspace();
                 var document = snapshot.GetOpenDocumentInCurrentContextWithChanges();
