@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="SemanticColorizer..675719A2-3029-4ADD-8A0C-912336B31716" Version="1.4.1" Language="en-US" Publisher="HicknHack Software GmbH" />
-    <DisplayName>Semantic Colorizer</DisplayName>
+    <Identity Id="SonarColorizer.886e3f6b-9e92-4c4b-990f-9c51fccfe53b" Version="1.4.1" Language="en-US" Publisher="LinkingMountains" />
+    <DisplayName>Sonar Colorizer</DisplayName>
     <Description xml:space="preserve">A semantic syntax classifier extension based on Roslyn for C# and Visual Basic.</Description>
-    <MoreInfo>https://github.com/hicknhack-software/semantic-colorizer</MoreInfo>
+    <MoreInfo>https://github.com/BRIZEIUM/sonar-colorizer</MoreInfo>
     <License>LICENSE.txt</License>
     <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
     <Icon>rainbow.png</Icon>
@@ -12,19 +12,19 @@
     <Tags>Semantic Syntax Highlighting Color</Tags>
   </Metadata>
   <Installation>
-    <InstallationTarget Version="[14.0,17.0)" Id="Microsoft.VisualStudio.Community">
+    <InstallationTarget Version="[15.0,17.0)" Id="Microsoft.VisualStudio.Community">
       <ProductArchitecture>x86</ProductArchitecture>
     </InstallationTarget>
     <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Community">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[14.0,17.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,17.0)">
       <ProductArchitecture>x86</ProductArchitecture>
     </InstallationTarget>
     <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,18.0)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Version="[14.0,17.0)" Id="Microsoft.VisualStudio.Enterprise">
+    <InstallationTarget Version="[15.0,17.0)" Id="Microsoft.VisualStudio.Enterprise">
       <ProductArchitecture>x86</ProductArchitecture>
     </InstallationTarget>
     <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
@@ -32,13 +32,13 @@
     </InstallationTarget>
   </Installation>
   <Dependencies>
-    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.6,)" />
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7.2,)" />
   </Dependencies>
   <Assets>
     <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
   </Assets>
   <Prerequisites>
-    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[14.0,)" DisplayName="Visual Studio core editor" />
-    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" Version="[14.0,)" DisplayName="C# and Visual Basic Roslyn compilers" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" Version="[15.0,)" DisplayName="C# and Visual Basic Roslyn compilers" />
   </Prerequisites>
 </PackageManifest>

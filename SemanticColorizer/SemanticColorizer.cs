@@ -13,7 +13,7 @@ using System.Linq;
 using CSharp = Microsoft.CodeAnalysis.CSharp;
 using VB = Microsoft.CodeAnalysis.VisualBasic;
 
-namespace SemanticColorizer
+namespace SonarColorizer
 {
 
     [Export(typeof(ITaggerProvider))]

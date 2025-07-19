@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 using System.Windows.Media;
 
-namespace SemanticColorizer
+namespace SonarColorizer
 {
     [Export(typeof(EditorFormatDefinition))]
     [ClassificationType(ClassificationTypeNames = Constants.FieldFormat)]

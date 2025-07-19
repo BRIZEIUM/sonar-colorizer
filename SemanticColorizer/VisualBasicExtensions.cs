@@ -1,7 +1,7 @@
 ﻿using Microsoft.CodeAnalysis.VisualBasic;
 using Microsoft.CodeAnalysis;
 
-namespace SemanticColorizer
+namespace SonarColorizer
 {
     public static class VbExtensions
     {
