@@ -1,3 +1,8 @@
+2025-07-19 V1.4.1
+* Fixed issues that caused VS2022 to get stuck at "Preparing Solution"
+* Now requires Visual Studio 2017 or later (VS2015 no longer supported)
+* Released via Sonar Colorizer (a fork of the original Semantic Colorizer)
+
 2022-01-09 V1.4.0
 * Added VS2022 support (thx @darress)
 * Colorize struct/class type keywords (thx @darress)

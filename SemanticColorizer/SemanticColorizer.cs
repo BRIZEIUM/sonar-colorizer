@@ -338,13 +338,10 @@ namespace SonarColorizer
                 // the ConfigureAwait() calls are important,
                 // otherwise we'll deadlock VS
                 SemanticModel semanticModel = null;
-                ThreadHelper.JoinableTaskFactory.Run(async delegate
-                {
-                    semanticModel = await document.GetSemanticModelAsync().ConfigureAwait(false);
-                });
                 SyntaxNode syntaxRoot = null;
                 ThreadHelper.JoinableTaskFactory.Run(async delegate
                 {
+                    semanticModel = await document.GetSemanticModelAsync().ConfigureAwait(false);
                     syntaxRoot = await document.GetSyntaxRootAsync().ConfigureAwait(false);
                 });
                 return new Cache
