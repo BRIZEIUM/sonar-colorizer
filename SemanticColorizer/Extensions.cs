@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Tagging;
 using System;
 
-namespace SemanticColorizer
+namespace SonarColorizer
 {
     public static class Extensions
     {

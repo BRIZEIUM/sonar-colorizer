@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SemanticColorizer
+namespace SonarColorizer
 {
     public static class Constants
     {

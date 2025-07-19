@@ -2,7 +2,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace SemanticColorizer
+namespace SonarColorizer
 {
     public static class CSharpExtensions
     {
