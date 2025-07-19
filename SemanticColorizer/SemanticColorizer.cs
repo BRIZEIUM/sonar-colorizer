@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
-using System.Threading.Tasks;
 using CSharp = Microsoft.CodeAnalysis.CSharp;
 using VB = Microsoft.CodeAnalysis.VisualBasic;
 
@@ -126,23 +125,17 @@ namespace SemanticColorizer
                 // this makes me feel dirty, but otherwise it will not
                 // work reliably, as TryGetSemanticModel() often will return false
                 // should make this into a completely async process somehow
-                var task = Cache.ResolveAsync(_theBuffer, spans[0].Snapshot);
+                Cache cache = null;
                 try
                 {
-                    ThreadHelper.JoinableTaskFactory.Run(async delegate
-                    {
-                        await task.ConfigureAwait(false);
-                    });
+                    cache = Cache.Resolve(_theBuffer, spans[0].Snapshot);
                 }
                 catch (Exception)
                 {
                     // TODO: report this to someone.
                     return Enumerable.Empty<ITagSpan<IClassificationTag>>();
                 }
-                ThreadHelper.JoinableTaskFactory.Run(async delegate
-                {
-                    _cache = await task.ConfigureAwait(false);
-                });
+                _cache = cache;
                 if (_cache == null)
                 {
                     // TODO: report this to someone.
@@ -159,7 +152,7 @@ namespace SemanticColorizer
             var snapshot = spans[0].Snapshot;
 
             IEnumerable<ClassifiedSpan> classifiedSpans =
-              GetClassifiedSpans(doc.Workspace, doc.SemanticModel, spans);
+              GetClassifiedSpans(doc.Document, doc.SemanticModel, spans);
 
             foreach (var span in classifiedSpans)
             {
@@ -303,7 +296,7 @@ namespace SemanticColorizer
         }
 
         private IEnumerable<ClassifiedSpan> GetClassifiedSpans(
-              Workspace workspace, SemanticModel model,
+              Document document, SemanticModel model,
               NormalizedSnapshotSpanCollection spans)
         {
             var comparer = StringComparer.InvariantCultureIgnoreCase;
@@ -311,7 +304,12 @@ namespace SemanticColorizer
               spans.SelectMany(span =>
               {
                   var textSpan = TextSpan.FromBounds(span.Start, span.End);
-                  return Classifier.GetClassifiedSpans(model, textSpan, workspace);
+                  IEnumerable<ClassifiedSpan> classifications = null;
+                  ThreadHelper.JoinableTaskFactory.Run(async delegate
+                  {
+                      classifications = await Classifier.GetClassifiedSpansAsync(document, textSpan).ConfigureAwait(false);
+                  });
+                  return classifications;
               });
             return classifiedSpans.Where(span =>
                 SupportedClassificationTypeNames.Contains(span.ClassificationType, comparer));
@@ -327,7 +325,7 @@ namespace SemanticColorizer
 
             private Cache() { }
 
-            public static async Task<Cache> ResolveAsync(ITextBuffer buffer, ITextSnapshot snapshot)
+            public static Cache Resolve(ITextBuffer buffer, ITextSnapshot snapshot)
             {
                 var workspace = buffer.GetWorkspace();
                 var document = snapshot.GetOpenDocumentInCurrentContextWithChanges();
@@ -339,8 +337,16 @@ namespace SemanticColorizer
 
                 // the ConfigureAwait() calls are important,
                 // otherwise we'll deadlock VS
-                var semanticModel = await document.GetSemanticModelAsync().ConfigureAwait(false);
-                var syntaxRoot = await document.GetSyntaxRootAsync().ConfigureAwait(false);
+                SemanticModel semanticModel = null;
+                ThreadHelper.JoinableTaskFactory.Run(async delegate
+                {
+                    semanticModel = await document.GetSemanticModelAsync().ConfigureAwait(false);
+                });
+                SyntaxNode syntaxRoot = null;
+                ThreadHelper.JoinableTaskFactory.Run(async delegate
+                {
+                    syntaxRoot = await document.GetSyntaxRootAsync().ConfigureAwait(false);
+                });
                 return new Cache
                 {
                     Workspace = workspace,
