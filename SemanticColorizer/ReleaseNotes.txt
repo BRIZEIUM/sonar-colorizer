@@ -1,3 +1,6 @@
+2025-12-20 V1.4.2
+* Improved typing responsiveness in VS2026
+
 2025-07-19 V1.4.1
 * Fixed issues that caused VS2022 to get stuck at "Preparing Solution"
 * Now requires Visual Studio 2017 or later (VS2015 no longer supported)
