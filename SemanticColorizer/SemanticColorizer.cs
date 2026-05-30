@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis.Text;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.VisualStudio.Text.Tagging;
 using Microsoft.VisualStudio.Utilities;
 using System;
@@ -50,7 +51,10 @@ namespace SonarColorizer
         private readonly IClassificationType _localType;
         private readonly IClassificationType _typeSpecialType;
         private readonly IClassificationType _eventType;
-        
+        private readonly IClassificationType _builtInMethodType;
+        private readonly IClassificationType _declarationMethodType;
+        private readonly IClassificationType _callMethodType;
+
         // Built in VS by default
         private readonly IClassificationType _builtInClassType;
         private readonly IClassificationType _builtInStructType;
@@ -115,6 +119,9 @@ namespace SonarColorizer
             _localType = registry.GetClassificationType(Constants.LocalFormat);
             _typeSpecialType = registry.GetClassificationType(Constants.TypeSpecialFormat);
             _eventType = registry.GetClassificationType(Constants.EventFormat);
+            _builtInMethodType = registry.GetClassificationType(Constants.BuiltInMethodFormat);
+            _declarationMethodType = registry.GetClassificationType(Constants.DeclarationMethodFormat);
+            _callMethodType = registry.GetClassificationType(Constants.CallMethodFormat);
 
             // Built in VS by default
             _builtInClassType = registry.GetClassificationType(Constants.BuiltInClassTypeFormat);
@@ -221,29 +228,38 @@ namespace SonarColorizer
                                 {
                                     yield return span.TextSpan.ToTagSpan(snapshot, _localFunctionType);
                                 }
-                                else if (methodSymbol.IsExtensionMethod)
-                                {
-                                    yield return span.TextSpan.ToTagSpan(snapshot, _extensionMethodType);
-                                }
-                                break;
-                            case NewClassificationTypeNames.ExtensionMethodName:
-                                yield return span.TextSpan.ToTagSpan(snapshot, _extensionMethodType);
                                 break;
                             case NewClassificationTypeNames.MethodName:
-                                //local function call
-                                if (methodSymbol.MethodKind == LocalMethodKind)
+                            case NewClassificationTypeNames.ExtensionMethodName:
+                                //declaration method
+                                if (IsDeclarationMethod(node))
                                 {
-                                    yield return span.TextSpan.ToTagSpan(snapshot, _localFunctionType);
+                                    yield return span.TextSpan.ToTagSpan(snapshot, _declarationMethodType);
+                                }
+                                //built-in method call
+                                else if (IsBuiltInMethod(methodSymbol))
+                                {
+                                    yield return span.TextSpan.ToTagSpan(snapshot, _builtInMethodType);
+                                }
+                                //method call
+                                else if (IsCallMethod(node))
+                                {
+                                    yield return span.TextSpan.ToTagSpan(snapshot, _callMethodType);
+                                }
+                                //local function call
+                                else if (methodSymbol.MethodKind == LocalMethodKind)
+                                {
+                                    yield return span.TextSpan.ToTagSpan(snapshot, _callMethodType);
                                 }
                                 //static method call
                                 else if (methodSymbol.MethodKind == MethodKind.Ordinary && methodSymbol.IsStatic)
                                 {
-                                    yield return span.TextSpan.ToTagSpan(snapshot, _staticMethodType);
+                                    yield return span.TextSpan.ToTagSpan(snapshot, _callMethodType);
                                 }
                                 //other method call
                                 else
                                 {
-                                    yield return span.TextSpan.ToTagSpan(snapshot, _normalMethodType);
+                                    yield return span.TextSpan.ToTagSpan(snapshot, _callMethodType);
                                 }
                                 break;
                         }
@@ -313,6 +329,63 @@ namespace SonarColorizer
                 node = syntaxRoot;
             }
             return GetExpression(node);
+        }
+
+        private static bool IsBuiltInMethod(IMethodSymbol symbol)
+        {
+            if (symbol == null)
+                return false;
+
+            var assemblyName = symbol.ContainingAssembly?.Name ?? string.Empty;
+            var ns = symbol.ContainingNamespace?.ToDisplayString() ?? string.Empty;
+
+            // Caso speciale: extension methods LINQ (First, Where, Select, ecc.)
+            if (symbol.IsExtensionMethod && symbol.ContainingType?.ToDisplayString() == "System.Linq.Enumerable")
+                return true;
+
+            if (assemblyName == "mscorlib" ||
+                assemblyName == "System.Runtime" ||
+                assemblyName == "System.Private.CoreLib" ||
+                assemblyName == "System.Core")
+            {
+                return true;
+            }
+
+            if (ns.StartsWith("System", StringComparison.Ordinal))
+                return true;
+
+            if (ns.StartsWith("Microsoft", StringComparison.Ordinal))
+                return true;
+
+            return false;
+        }
+
+        private bool IsDeclarationMethod(SyntaxNode node)
+        {
+            if (node.Language == LanguageNames.CSharp)
+                return node is Microsoft.CodeAnalysis.CSharp.Syntax.MethodDeclarationSyntax;
+
+            if (node.Language == LanguageNames.VisualBasic)
+                return node is Microsoft.CodeAnalysis.VisualBasic.Syntax.MethodStatementSyntax ||
+                       node is Microsoft.CodeAnalysis.VisualBasic.Syntax.MethodBlockSyntax;
+
+            return false;
+        }
+
+        private bool IsCallMethod(SyntaxNode node)
+        {
+            if (node.Language == LanguageNames.CSharp)
+                return node is CSharp.Syntax.InvocationExpressionSyntax;
+
+            if (node.Language == LanguageNames.VisualBasic)
+            {
+                if (node is VB.Syntax.IdentifierNameSyntax)
+                    return true;
+                if (node.Parent is VB.Syntax.InvocationExpressionSyntax)
+                    return true;
+            }
+
+            return false;
         }
 
         private bool IsSpecialType(ISymbol symbol)

@@ -49,4 +49,11 @@ namespace Test
 
         public int Run(string arg) => throw new NotImplementedException();
     }
+
+    internal class Testing
+    {
+        string Testing = "Test string";
+
+        string SplittedTesting = Testing.Substring(0, 4);
+    }
 }

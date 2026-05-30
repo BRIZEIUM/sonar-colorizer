@@ -177,4 +177,43 @@ namespace SonarColorizer
             DisplayName = "Semantic Event";
         }
     }
+
+    [Export(typeof(EditorFormatDefinition))]
+    [ClassificationType(ClassificationTypeNames = Constants.BuiltInMethodFormat)]
+    [Name(Constants.BuiltInMethodFormat)]
+    [UserVisible(true)]
+    [Order(After = ClassificationTypeNames.Identifier)]
+    internal sealed class SemanticBuiltInMethodFormat : ClassificationFormatDefinition
+    {
+        public SemanticBuiltInMethodFormat()
+        {
+            DisplayName = "Semantic BuiltIn Method";
+        }
+    }
+
+    [Export(typeof(EditorFormatDefinition))]
+    [ClassificationType(ClassificationTypeNames = Constants.DeclarationMethodFormat)]
+    [Name(Constants.DeclarationMethodFormat)]
+    [UserVisible(true)]
+    [Order(After = ClassificationTypeNames.Identifier)]
+    internal sealed class SemanticDeclarationMethodFormat : ClassificationFormatDefinition
+    {
+        public SemanticDeclarationMethodFormat()
+        {
+            DisplayName = "Semantic Declaration Method";
+        }
+    }
+
+    [Export(typeof(EditorFormatDefinition))]
+    [ClassificationType(ClassificationTypeNames = Constants.CallMethodFormat)]
+    [Name(Constants.CallMethodFormat)]
+    [UserVisible(true)]
+    [Order(After = ClassificationTypeNames.Identifier)]
+    internal sealed class SemanticCallMethodFormat : ClassificationFormatDefinition
+    {
+        public SemanticCallMethodFormat()
+        {
+            DisplayName = "Semantic Call Method";
+        }
+    }
 }
