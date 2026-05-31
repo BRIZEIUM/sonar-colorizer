@@ -1,41 +1,47 @@
-# Semantic Syntax Colorizer
+# Polished Semantic Syntax Colorizer
 
-[![Visual Studio | Marketplace](https://img.shields.io/badge/Visual%20Studio%20|%20Marketplace-1.4.1-green.svg?colorB=00a84b&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd%2BUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAgtJREFUeNq01s9LlEEcx3F3i1gUIkEsWJEiiZR2A0tJXIKuS5cW9GyE%2FgEZCOGC4MEfGB1ClD20Fy%2B6RURQQR4NikBBg06FINopjdZSWNun9%2BA8MD3OjM%2BzPg68Ls%2FM83yY7zwzzxNxHKcq5JbBLeSwcqBXBIboJtac%2FfYdeaQRc8eEHfbD0bdlDOFSJKSSpvAc9YeM%2BxQNIawDz3yEiXZKDYzjesCwdrzAWZ%2Fjy6L2UWTwDbvo97lmbVh3grVFceOgpuMpzljCWpW3MVCgKOl5zdTv4g2uaPquyjI2GMr2GdummorAkqHvBublRnZbUoY1Gu7Jowd7xlVkmlPKlMU6Fj1l%2BIsBWcavlnJNyHJfwG%2FbGqqBk%2BhGSTPY9JA93FfW9zK2TYEnPROOYQ418ixU%2B6s1BSriHgp%2B95F340eUteiVDzS1L0gHCdMFqk28MFuWfvE2LgQ9lkwzFFvlteVtFK0Lr1B3lMA%2FOIeXSPi4%2FzbeoqnSwIvyIE56rn%2FAuOEZ1%2FAOne5OsyZ6toWuzaJWvvIPLON%2Byo9tXLOX%2F9uH04bOkjxnvefogCV0B4%2BxaQvMaTo2cMdyeD88pCplW2ACBeXiezT7%2BDxlK%2FlaqA%2FowxOcDvAfM3SUwEoNBwhcCuOfJotRn2NPhPmbOGaZ2S%2FMIBX2j%2FCEJ2gVI2g5jh9h1yN8RC%2FqvP3%2FBBgAP9DoY%2BErIbwAAAAASUVORK5CYII%3D)](https://marketplace.visualstudio.com/items?itemName=LinkingMountains.SonarColorizer)
+[![Visual Studio | Marketplace](https://img.shields.io/badge/Visual%20Studio%20|%20Marketplace-1.4.3-green.svg?colorB=00a84b&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd%2BUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAgtJREFUeNq01s9LlEEcx3F3i1gUIkEsWJEiiZR2A0tJXIKuS5cW9GyE%2FgEZCOGC4MEfGB1ClD20Fy%2B6RURQQR4NikBBg06FINopjdZSWNun9%2BA8MD3OjM%2BzPg68Ls%2FM83yY7zwzzxNxHKcq5JbBLeSwcqBXBIboJtac%2FfYdeaQRc8eEHfbD0bdlDOFSJKSSpvAc9YeM%2BxQNIawDz3yEiXZKDYzjesCwdrzAWZ%2Fjy6L2UWTwDbvo97lmbVh3grVFceOgpuMpzljCWpW3MVCgKOl5zdTv4g2uaPquyjI2GMr2GdummorAkqHvBublRnZbUoY1Gu7Jowd7xlVkmlPKlMU6Fj1l%2BIsBWcavlnJNyHJfwG%2FbGqqBk%2BhGSTPY9JA93FfW9zK2TYEnPROOYQ418ixU%2B6s1BSriHgp%2B95F340eUteiVDzS1L0gHCdMFqk28MFuWfvE2LgQ9lkwzFFvlteVtFK0Lr1B3lMA%2FOIeXSPi4%2FzbeoqnSwIvyIE56rn%2FAuOEZ1%2FAOne5OsyZ6toWuzaJWvvIPLON%2Byo9tXLOX%2F9uH04bOkjxnvefogCV0B4%2BxaQvMaTo2cMdyeD88pCplW2ACBeXiezT7%2BDxlK%2FlaqA%2FowxOcDvAfM3SUwEoNBwhcCuOfJotRn2NPhPmbOGaZ2S%2FMIBX2j%2FCEJ2gVI2g5jh9h1yN8RC%2FqvP3%2FBBgAP9DoY%2BErIbwAAAAASUVORK5CYII%3D)](https://marketplace.visualstudio.com/items?itemName=LinkingMountains.PolishedSemanticColorizer)
 
-A Visual Studio 2017, 2019, 2022, and 2026 editor extension for semantic syntax highlighting.
+## Overview
 
-It uses the Roslyn APIs to highlight the following syntax types in distinctive colors to make them easily recognizable.
+**Polished Semantic Colorizer** is a maintained fork of the archived Semantic Colorizer extension for Visual Studio. It retains all original Roslyn-based semantic highlighting features.
 
-Sonar Colorizer is a fork of the original (archived) Semantic Colorizer project.
+## Key Improvements
 
-To change the colors use the regular Visual Studio "Font and Colors" Options. Look for `Semantic *` in the "Display items".
+This fork resolves a known stability issue from the original project:
+- Fixed an issue that caused VS2022 to hang during "Preparing Solution"
 
-* Class fields
-* Enum fields
-* Static methods
-* Regular methods
-* Constructors
-* Type parameters
-* Parameters
-* Namespaces
-* Class properties
-* Local variables
-* Special types (built in)
+## Compatibility
 
-The code is fairly simple, but it is not currently written using the Async APIs in Roslyn.
+Supports Visual Studio 2017 and newer (2019 / 2022 / 2026). Visual Studio 2015 is no longer supported.
 
-This extension works for Visual Studio 2017 and all successors.
+## Highlight Coverage
 
-You might want to combine this extension with:
-* Viasfora - color access modifiers, control flow
-* Build in `User Types - *` Display Items - to change color for regular types `class`, `enum`, `delegate` etc.
+This extension provides semantic highlighting for the following code elements:
+- Class fields & Enum fields
+- Static methods & Regular instance methods
+- Constructors
+- Type parameters & Method parameters
+- Namespaces & Class properties
+- Local variables & Special built-in types
+- Local methods, Declaration methods & Built-in methods
+
+## Customization
+
+All semantic colors can be customized in Visual Studio via **Tools > Options > Environment > Fonts and Colors**. Look for display items starting with `Semantic *`.
+
+## Recommended Companion Extensions
+
+These extensions pair well with this tool for enhanced code coloring:
+- **Viasfora**: Adds color highlighting for access modifiers and control flow keywords
+- Visual Studio built-in **User Types** items: Customize display colors for classes, enums, delegates and other custom user types
 
 ## License
 
-Apache License Version 2.0
-See LICENSE file for more details
+Licensed under Apache License 2.0. See the included `LICENSE` file for details.
 
-## Contribute
+## Contribute & Feedback
 
-If you like this project give it a star.
-If you don't like it or found a bug, please write an issue.
+- Star the repository if you find this extension useful
+- Report bugs or suggestions via issues
+- Pull requests are welcome for further improvements

@@ -58,6 +58,18 @@ namespace SonarColorizer
         [Export(typeof(ClassificationTypeDefinition))]
         [Name(Constants.EventFormat)]
         internal static ClassificationTypeDefinition EventType;
+
+        [Export(typeof(ClassificationTypeDefinition))]
+        [Name(Constants.BuiltInMethodFormat)]
+        internal static ClassificationTypeDefinition BuiltInMethodType;
+
+        [Export(typeof(ClassificationTypeDefinition))]
+        [Name(Constants.DeclarationMethodFormat)]
+        internal static ClassificationTypeDefinition DeclarationMethodType;
+
+        [Export(typeof(ClassificationTypeDefinition))]
+        [Name(Constants.CallMethodFormat)]
+        internal static ClassificationTypeDefinition CallMethodType;
 #pragma warning restore CS0649
     }
 }

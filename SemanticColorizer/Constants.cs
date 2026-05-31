@@ -17,6 +17,9 @@ namespace SonarColorizer
         public const String LocalFormat = "s.semantic-colorizer.local";
         public const String TypeSpecialFormat = "s.semantic-colorizer.type-special";
         public const String EventFormat = "s.semantic-colorizer.event";
+        public const String BuiltInMethodFormat = "s.semantic-colorizer.builtin-method";
+        public const String DeclarationMethodFormat = "s.semantic-colorizer.declaration-method";
+        public const String CallMethodFormat = "s.semantic-colorizer.call-method";
 
         // Built in VS by default
         public const String BuiltInClassTypeFormat = "class name";
