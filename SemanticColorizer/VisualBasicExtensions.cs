@@ -1,7 +1,7 @@
 ﻿using Microsoft.CodeAnalysis.VisualBasic;
 using Microsoft.CodeAnalysis;
 
-namespace SonarColorizer
+namespace Colsemroslyn
 {
     public static class VbExtensions
     {

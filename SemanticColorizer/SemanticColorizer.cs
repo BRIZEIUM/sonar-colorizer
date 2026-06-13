@@ -14,7 +14,7 @@ using System.Linq;
 using CSharp = Microsoft.CodeAnalysis.CSharp;
 using VB = Microsoft.CodeAnalysis.VisualBasic;
 
-namespace SonarColorizer
+namespace Colsemroslyn
 {
 
     [Export(typeof(ITaggerProvider))]

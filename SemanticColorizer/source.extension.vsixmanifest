@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
-    <Metadata>
-        <Identity Id="PolishedSemanticColorizer.082ad470-9af3-465a-b2aa-25d0f9166666" Version="1.4.3" Language="en-US" Publisher="LinkingMountains" />
-        <DisplayName>Polished Semantic Colorizer</DisplayName>
-        <Description xml:space="preserve">A Roslyn-powered semantic syntax highlighter for C# and Visual Basic.</Description>
-        <MoreInfo>https://github.com/BRIZEIUM/sonar-colorizer</MoreInfo>
-        <License>LICENSE.txt</License>
-        <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
-        <Icon>rainbow.png</Icon>
-        <PreviewImage>SemanticColorizerExample.png</PreviewImage>
-        <Tags>Semantic Syntax Highlighting Color</Tags>
-    </Metadata>
-    <Installation>
-        <InstallationTarget Version="[15.0,18.0)" Id="Microsoft.VisualStudio.Community">
-            <ProductArchitecture>x86</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[17.0,19.0)" Id="Microsoft.VisualStudio.Community">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,18.0)">
-            <ProductArchitecture>x86</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,19.0)">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[15.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
-            <ProductArchitecture>x86</ProductArchitecture>
-        </InstallationTarget>
-        <InstallationTarget Version="[17.0,19.0)" Id="Microsoft.VisualStudio.Enterprise">
-            <ProductArchitecture>amd64</ProductArchitecture>
-        </InstallationTarget>
-    </Installation>
-    <Dependencies>
-        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.7.2,)" />
-    </Dependencies>
-    <Assets>
-        <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
-    </Assets>
-    <Prerequisites>
-        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,)" DisplayName="Visual Studio core editor" />
-        <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" Version="[15.0,)" DisplayName="C# and Visual Basic Roslyn compilers" />
-    </Prerequisites>
+  <Metadata>
+    <Identity Id="Colsemroslyn.50dbed17-61ad-46b6-b77f-7e38f422f9b1" Version="1.4.4" Language="en-US" Publisher="LinkingMountains" />
+    <DisplayName>Colsemroslyn</DisplayName>
+    <Description xml:space="preserve">A maintained fork of the archived Semantic Colorizer extension. Fixes VS2022 hang during solution preparation. Provides Roslyn-powered semantic highlighting for C# and VB.NET.</Description>
+    <MoreInfo>https://github.com/BRIZEIUM/sonar-colorizer</MoreInfo>
+    <License>LICENSE.txt</License>
+    <ReleaseNotes>ReleaseNotes.txt</ReleaseNotes>
+    <Icon>rainbow.png</Icon>
+    <PreviewImage>SemanticColorizerExample.png</PreviewImage>
+    <Tags>Roslyn Syntax Highlighting CSharp VB.NET Color Semantic Code Coloring Visual Studio</Tags>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,18.0)">
+      <ProductArchitecture>x86</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,18.0)">
+      <ProductArchitecture>x86</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,19.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[15.0,18.0)">
+      <ProductArchitecture>x86</ProductArchitecture>
+    </InstallationTarget>
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,19.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+  </Installation>
+  <Dependencies>
+    <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" Version="[4.7.2,)" d:Source="Manual" />
+  </Dependencies>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.MefComponent" Path="|%CurrentProject%|" d:Source="Project" d:ProjectName="%CurrentProject%" />
+  </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" DisplayName="Visual Studio core editor" Version="[15.0,)" />
+    <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.Compiler" DisplayName="C# and Visual Basic Roslyn compilers" Version="[15.0,)" />
+  </Prerequisites>
 </PackageManifest>

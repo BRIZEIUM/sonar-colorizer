@@ -31,8 +31,8 @@
     <ProjectGuid>{1EC486EE-EE95-4159-A186-84EDF5B2EC29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SonarColorizer</RootNamespace>
-    <AssemblyName>PolishedSemanticColorizer</AssemblyName>
+    <RootNamespace>Colsemroslyn</RootNamespace>
+    <AssemblyName>Colsemroslyn</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>

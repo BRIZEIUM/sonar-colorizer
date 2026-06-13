@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.Utilities;
 using System.ComponentModel.Composition;
 
-namespace SonarColorizer
+namespace Colsemroslyn
 {
     internal static class ClassificationTypes
     {
