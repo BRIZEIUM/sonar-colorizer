@@ -1,3 +1,6 @@
+2026-06-13 V1.4.4
+* Released via Colsemroslyn
+
 2026-05-31 V1.4.3
 * Added highlighting support for local, declaration and built-in methods (thx @Icorebleidd)
 * Released via Polished Semantic Colorizer

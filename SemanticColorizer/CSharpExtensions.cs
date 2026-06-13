@@ -2,7 +2,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
-namespace SonarColorizer
+namespace Colsemroslyn
 {
     public static class CSharpExtensions
     {

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Text.Tagging;
 using System;
 
-namespace SonarColorizer
+namespace Colsemroslyn
 {
     public static class Extensions
     {
