@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Colsemroslyn.50dbed17-61ad-46b6-b77f-7e38f422f9b1" Version="1.4.4" Language="en-US" Publisher="LinkingMountains" />
-    <DisplayName>Colsemroslyn</DisplayName>
+    <Identity Id="CodeSpectrum.b8ef0979-2975-4168-a9b7-3feda991dafd" Version="1.4.5" Language="en-US" Publisher="LinkingMountains" />
+    <DisplayName>CodeSpectrum</DisplayName>
     <Description xml:space="preserve">A maintained fork of the archived Semantic Colorizer extension. Fixes VS2022 hang during solution preparation. Provides Roslyn-powered semantic highlighting for C# and VB.NET.</Description>
     <MoreInfo>https://github.com/BRIZEIUM/sonar-colorizer</MoreInfo>
     <License>LICENSE.txt</License>

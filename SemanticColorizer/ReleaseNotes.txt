@@ -1,3 +1,6 @@
+2026-07-19 V1.4.5
+* Released via CodeSpectrum
+
 2026-06-13 V1.4.4
 * Released via Colsemroslyn
 
