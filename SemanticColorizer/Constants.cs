@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Colsemroslyn
+namespace SonarColorizer
 {
     public static class Constants
     {
