@@ -1,3 +1,6 @@
+2026-07-25 V1.4.6
+* Released via Noetphosiris
+
 2026-07-19 V1.4.5
 * Released via CodeSpectrum
 
