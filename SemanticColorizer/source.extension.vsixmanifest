@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="Noetphosiris.67d07693-bb87-4ab1-9f21-f15ede3dc573" Version="1.4.6" Language="en-US" Publisher="LinkingMountains" />
+    <Identity Id="Noetphosiris.67d07693-bb87-4ab1-9f21-f15ede3dc573" Version="1.4.7" Language="en-US" Publisher="LinkingMountains" />
     <DisplayName>Noetphosiris</DisplayName>
     <Description xml:space="preserve">A maintained fork of the archived Semantic Colorizer extension. Fixes VS2022 hang during solution preparation. Provides Roslyn-powered semantic highlighting for C# and VB.NET.</Description>
     <MoreInfo>https://github.com/BRIZEIUM/sonar-colorizer</MoreInfo>
@@ -12,19 +12,19 @@
     <Tags>Roslyn Syntax Highlighting CSharp VB.NET Color Semantic Code Coloring Visual Studio</Tags>
   </Metadata>
   <Installation>
-    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0,17.0)">
       <ProductArchitecture>x86</ProductArchitecture>
     </InstallationTarget>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,19.0)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[15.0,17.0)">
       <ProductArchitecture>x86</ProductArchitecture>
     </InstallationTarget>
     <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[17.0,19.0)">
       <ProductArchitecture>amd64</ProductArchitecture>
     </InstallationTarget>
-    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[15.0,18.0)">
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[15.0,17.0)">
       <ProductArchitecture>x86</ProductArchitecture>
     </InstallationTarget>
     <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[17.0,19.0)">
