@@ -1,3 +1,6 @@
+2026-07-31 V1.4.7
+* Fix VSIX manifest x86 architecture compatibility with VS2022
+
 2026-07-25 V1.4.6
 * Released via Noetphosiris
 
